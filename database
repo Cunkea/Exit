@@ -1,0 +1,106 @@
+drop database if exists exxit;
+create database exxit character set utf8 collate utf8_general_ci;
+use exxit;
+
+create table osoba(
+	id int not null primary key auto_increment,
+	ime nvarchar(50) not null,
+	prezime nvarchar(50) not null,
+	datum date not null,
+	email nvarchar(50) not null,
+	username nvarchar(50) not null,
+	sifra nvarchar(50) not null,
+	kreirano datetime NOT NULL
+)engine=innodb;
+
+insert into osoba(ime, prezime, datum, email, username, sifra, kreirano) values("Matej", "Štajduhar", "1993-09-30", "susena.sunka@gmail.com", "cunkea", "134679852a", now());
+
+create table pice(
+	id int not null primary key auto_increment,
+	naziv nvarchar(50) not null,
+	alk bool,
+	cijena float,
+	kolicina nvarchar(10)
+)engine=innodb;
+
+create table event(
+	id int not null primary key auto_increment,
+	naziv nvarchar(50) not null,
+	opis nvarchar(1000) not null,
+	datum date not null,
+	kreirano datetime
+)engine=innodb;
+
+insert into pice(naziv, alk, cijena, kolicina)
+	values
+	("Kava", false, 5.00, "šalica"),
+	("Kava sa šlagom", false, 5.00, "šalica"),
+	("Kava sa mlijekom", false, 5.00, "šalica"),
+	("Bijela kava", false, 8.00, "šalica"),
+	("Melange instant kava", false, 7.00, "šalica"),
+	("Topla čokolada", false, 10.00, "šalica"),
+	("Čaj", false, 9.00, "šalica"),
+
+	("Gazirani sok", false, 13.00, "0,25 l"),
+	("Gazirani sok", false, 6.50, "0,10 l"),
+	("Prirodni sok", false, 13.00, "0,20 l"),
+	("Prirodni sok", false, 6.50, "0,10 l"),
+	("Ledeni čaj", false, 13.00, "0,25 l"),
+	("Orangina", false, 15.00, "0,25 l"),
+	("Cedevita", false, 10.00, "vrećica"),
+	("Energetski napitak", false, 20.00, "0,25 l"),
+
+	("Mineralna voda", false, 20.00, "1,00 l"),
+	("Mineralna voda", false, 2.00, "0,10 l"),
+	("Mineralna voda", false, 10.00, "0,25 l"),
+	("Prirodna voda", false, 10.00, "0,33 l"),
+	("Prirodna voda okusi", false, 10.00, "0,25 l"),
+
+	("Kava + Cedevita", false, 10.00, ""),
+	("Kava + Voda s okusom", false, 12.00, ""),
+	("Kava + Gazirani sok", false, 14.00, ""),
+
+	("Ožujsko točeno", true, 12.00, "0,50 l"),
+	("Ožujsko točeno", true, 9.00, "0,30 l"),
+	("Ožujsko točeno", true, 7.00, "0,20 l"),
+	("Ožujsko", true, 14.00, "0,50 l"),
+	("Ožujsko Cool", true, 14.00, "0,50 l"),
+	("Ožujsko Limun", true, 14.00, "0,50 l"),
+	("Ožujsko Grejp", true, 14.00, "0,50 l"),
+	("Tamno Ožujsko Višnja", true, 14.00, "0,50 l"),
+	("Ožujsko Rezano", true, 14.00, "0,50 l"),
+	("Tomislav", true, 16.00, "0,50 l"),
+	("Nikšičko", true, 14.00, "0,50 l"),
+	("Staropramen", true, 15.00, "0,50 l"),
+	("Staropramen Selection", true, 15.00, "0,50 l"),
+	("Beck's", true, 15.00, "0,50 l"),
+	("Carling", true, 16.00, "0,50 l"),
+	("Carling Cherry Cider", true, 15.00, "0,30 l"),
+	("Stella Artois", true, 16.00, "0,33 l"),
+	("Leffe blond", true, 25.00, "0,33 l"),
+	("Leffe brune", true, 25.00, "0,33 l"),
+	("Hoegaarden", true, 25.00, "0,33 l"),
+	("Corona", true, 25.00, "0,355 l"),
+
+	("Vino bijelo", true, 80.00, "1,00 l"),
+	("Vino bijelo", true, 8.00, "0,10 l"),
+	("Vino crno", true, 80.00, "1,00 l"),
+	("Vino crno", true, 8.00, "0,10 l"),
+	("Vino bijelo butelja", true, 130.00, "0,75 l"),
+	("Vino crno butelja", true, 130.00, "0,75 l"),
+	("Martini", true, 18.00, "0,10 l"),
+	("Bambus", true, 14.50, "0,20 l"),
+	("Bambus", true, 22.50, "0,30 l"),
+	("Deci - deci", true, 10.00, "0,20 l"),
+	("Dva sa jedan", true, 18.00, "0,30 l"),
+    
+	("Domaći likeri", true, 10.00, "0,03 l"),
+	("Strani likeri", true, 15.00, "0,03 l"),
+	("Famos Groose", true, 12.00, "0,03 l"),
+	("Ballantine's", true, 15.00, "0,03 l"),
+	("Jameson", true, 15.00, "0,03 l"),
+	("Jack Daniel's", true, 18.00, "0,03 l"),
+	("Johnnie Walker", true, 18.00, "0,03 l"),
+	("Chivas", true, 18.00, "0,03 l"),
+	("Tequila", true, 12.00, "0,03 l"),
+	("Martell", true, 18.00, "0,03 l");
